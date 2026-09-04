@@ -1,0 +1,22 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/product/*"
+  to = "/product/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/assistant/*"
+  to = "/assistant/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/compare/*"
+  to = "/compare/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/result/*"
+  to = "/result/index.html"
+  status = 200

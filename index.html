@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><title>Wishlist Decision Assistant</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-primary-fixed": "#400011", "surface-variant": "#e1e2e4", "on-tertiary-fixed-variant": "#005236", "secondary": "#575e70", "on-primary-fixed-variant": "#910031", "tertiary-fixed-dim": "#4edea3", "on-primary": "#ffffff", "inverse-on-surface": "#f0f1f3", "on-error-container": "#93000a", "surface-container": "#edeef0", "surface-tint": "#bd0043", "secondary-fixed": "#dce2f7", "on-secondary-container": "#5c6274", "on-tertiary": "#ffffff", "surface-container-highest": "#e1e2e4", "on-secondary": "#ffffff", "surface-dim": "#d9dadc", "surface": "#f8f9fb", "on-error": "#ffffff", "inverse-surface": "#2e3132", "surface-container-lowest": "#ffffff", "inverse-primary": "#ffb2ba", "on-secondary-fixed": "#141b2b", "surface-container-high": "#e7e8ea", "outline-variant": "#e3bdc0", "outline": "#8f6f72", "primary-fixed": "#ffd9dc", "on-primary-container": "#fffbff", "secondary-fixed-dim": "#c0c6db", "surface-container-low": "#f3f4f6", "on-surface-variant": "#5b4042", "primary": "#b90041", "tertiary": "#006947", "tertiary-container": "#00855b", "on-tertiary-fixed": "#002113", "on-secondary-fixed-variant": "#404758", "on-background": "#191c1e", "primary-fixed-dim": "#ffb2ba", "on-tertiary-container": "#f5fff6", "error": "#ba1a1a", "on-surface": "#191c1e", "surface-bright": "#f8f9fb", "error-container": "#ffdad6", "tertiary-fixed": "#6ffbbe", "primary-container": "#df2457", "background": "#f8f9fb", "secondary-container": "#d9dff5" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-sm": "0.75rem", "space-xl": "1.5rem", "space-md": "1rem", "space-xs": "0.5rem", "screen-padding": "1rem", "sticky-cta-height": "4.5rem", "space-lg": "1.25rem", "gutter-mobile": "1rem", "bottom-nav-height": "4.25rem", "space-2xl": "2rem", "space-2xs": "0.25rem" }, fontFamily: { "label-pill": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "price-prominent": ["Plus Jakarta Sans"], "caption-micro": ["Plus Jakarta Sans"], "label-bold": ["Plus Jakarta Sans"], "display-hero": ["Plus Jakarta Sans"], "price-original": ["Plus Jakarta Sans"], "title-sm": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"] }, fontSize: { "label-pill": ["11px", { lineHeight: "14px", letterSpacing: "0.02em", fontWeight: "600" }], "headline-lg": ["24px", { lineHeight: "30px", letterSpacing: "-0.015em", fontWeight: "700" }], "price-prominent": ["18px", { lineHeight: "22px", letterSpacing: "-0.01em", fontWeight: "800" }], "caption-micro": ["10px", { lineHeight: "12px", letterSpacing: "0.01em", fontWeight: "500" }], "label-bold": ["12px", { lineHeight: "16px", letterSpacing: "0.04em", fontWeight: "700" }], "display-hero": ["32px", { lineHeight: "38px", letterSpacing: "-0.02em", fontWeight: "800" }], "price-original": ["13px", { lineHeight: "18px", letterSpacing: "0em", fontWeight: "500" }], "title-sm": ["16px", { lineHeight: "22px", letterSpacing: "-0.005em", fontWeight: "600" }], "body-lg": ["15px", { lineHeight: "22px", letterSpacing: "0em", fontWeight: "400" }], "body-sm": ["13px", { lineHeight: "18px", letterSpacing: "0.005em", fontWeight: "400" }], "headline-md": ["20px", { lineHeight: "26px", letterSpacing: "-0.01em", fontWeight: "700" }] } } } };</script><style>@layer base { html, body { width: 100%; margin: 0; padding: 0; min-height: 100%; } body { overscroll-behavior-y: none; -webkit-tap-highlight-color: transparent; } .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); } .pt-safe { padding-top: env(safe-area-inset-top, 0px); } } .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; display: inline-block; vertical-align: middle; } .fill-icon { font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24; } ::-webkit-scrollbar { display: none; }</style></head><body class="bg-surface text-on-surface font-body-sm antialiased selection:bg-primary-fixed selection:text-on-primary-fixed"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.03)]"><div class="h-14 px-screen-padding flex items-center justify-between"><div class="flex items-center gap-space-xs"><span class="font-headline-md text-headline-md tracking-tight text-on-surface font-extrabold">MYNTRA</span><span class="text-on-surface-variant font-caption-micro text-caption-micro px-1 py-0.5 rounded bg-surface-container tracking-widest uppercase font-semibold">ATELIER</span></div><div class="flex items-center gap-1"><button aria-label="Search" class="w-11 h-11 flex items-center justify-center text-on-surface hover:text-primary transition-colors active:scale-95"><span class="material-symbols-outlined text-[22px]">search</span></button><button aria-label="Notifications" class="w-11 h-11 flex items-center justify-center text-on-surface hover:text-primary transition-colors active:scale-95 relative"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-primary ring-2 ring-surface"></span></button><button aria-label="Shopping Bag" class="w-11 h-11 flex items-center justify-center text-on-surface hover:text-primary transition-colors active:scale-95 relative"><span class="material-symbols-outlined text-[22px]">shopping_bag</span><span class="absolute top-1.5 right-1.5 min-w-[16px] h-4 px-1 rounded-full bg-primary text-on-primary font-caption-micro text-[10px] leading-4 font-bold flex items-center justify-center">2</span></button><div class="w-8 h-8 ml-1 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex flex-col relative w-full pt-14 pb-[calc(4.25rem+env(safe-area-inset-bottom,0px))] bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- Title Lockup Area -->
+<div class="px-screen-padding pt-space-md pb-space-xs flex items-baseline justify-between">
+<div class="flex items-baseline gap-space-xs">
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">My Wishlist</h1>
+<span class="font-title-sm text-title-sm text-secondary font-medium">(6 items)</span>
+</div>
+<button class="font-label-bold text-label-bold text-primary flex items-center gap-1 active:opacity-70 transition-opacity">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+<span>Filter</span>
+</button>
+</div>
+<!-- Editorial AI Decision Assistant Invitation Banner -->
+<div class="px-screen-padding pb-space-md">
+<div class="relative overflow-hidden rounded-xl bg-gradient-to-r from-primary-fixed/60 via-surface-container-low to-surface-container-low p-space-md shadow-sm">
+<div class="flex items-start gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface flex items-center justify-center shrink-0 shadow-sm text-primary">
+<span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+</div>
+<div class="flex-1 min-w-0 pr-1">
+<div class="flex items-center gap-1.5 mb-1">
+<span class="font-label-bold text-label-bold text-on-surface uppercase tracking-wider">Atelier Decision Support</span>
+<span class="px-1.5 py-0.5 rounded-full bg-primary text-on-primary font-caption-micro text-caption-micro uppercase font-bold">New</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-snug">
+            Unsure about buying? Get intelligent AI analysis on your saved pieces to weigh fit confidence, wardrobe compatibility, and value.
+          </p>
+</div>
+</div>
+<div class="mt-space-sm pt-space-xs flex items-center justify-between border-t border-surface-container-highest/60">
+<span class="font-caption-micro text-caption-micro text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-tertiary">verified</span>
+          Analyzes return rates &amp; price trends
+        </span>
+<button class="font-label-pill text-label-pill text-primary font-bold hover:underline flex items-center gap-0.5" id="toggle-filter-btn">
+          See Recommended Action <span class="material-symbols-outlined text-[14px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Smart Quick Deliberation Filter Chips -->
+<div class="flex items-center gap-space-xs overflow-x-auto px-screen-padding pb-space-md no-scrollbar">
+<button class="shrink-0 h-8 px-3.5 rounded-full bg-inverse-surface text-inverse-on-surface font-label-pill text-label-pill shadow-sm flex items-center gap-1.5">
+<span>All Items</span>
+<span class="opacity-70 text-[10px]">6</span>
+</button>
+<button class="shrink-0 h-8 px-3.5 rounded-full bg-surface-container-low text-on-surface font-label-pill text-label-pill shadow-sm flex items-center gap-1.5 active:bg-surface-container">
+<span class="material-symbols-outlined text-primary text-[14px]">auto_awesome</span>
+<span>Ready to Decide</span>
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+</button>
+<button class="shrink-0 h-8 px-3.5 rounded-full bg-surface-container-low text-on-surface font-label-pill text-label-pill shadow-sm flex items-center gap-1.5 active:bg-surface-container">
+<span class="material-symbols-outlined text-tertiary text-[14px]">trending_down</span>
+<span>Price Dropped</span>
+</button>
+<button class="shrink-0 h-8 px-3.5 rounded-full bg-surface-container-low text-on-surface font-label-pill text-label-pill shadow-sm flex items-center gap-1.5 active:bg-surface-container">
+<span class="material-symbols-outlined text-secondary text-[14px]">schedule</span>
+<span>Saved &gt; 14 Days</span>
+</button>
+</div>
+<!-- Primary Featured Card: The Hero Decision Piece -->
+<div class="px-screen-padding pb-space-lg">
+<div class="relative bg-surface-container-lowest rounded-xl overflow-hidden shadow-md">
+<!-- Glow Accent Header Ribbon for AI Attention -->
+<div class="bg-gradient-to-r from-primary via-primary-container to-primary-fixed-dim px-space-md py-1.5 flex items-center justify-between text-on-primary">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px]">psychology</span>
+<span class="font-label-bold text-label-bold tracking-wide uppercase">Deliberation Priority</span>
+</div>
+<span class="font-caption-micro text-caption-micro opacity-95">Saved 12 days ago</span>
+</div>
+<div class="p-space-md flex flex-col gap-space-md">
+<!-- Visual & Quick Details Row -->
+<a class="flex gap-space-md items-start group" href="#">
+<div class="relative w-28 aspect-[3/4] rounded-lg overflow-hidden shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Editorial catalog fashion shot of a chic beige MANGO tailored linen-blend blazer styled on an elegant model against a clean warm studio background, high quality lighting with soft shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfww42DXkRGkW1y-GINHPXAN092r2GTRhhxDjMOSiTCyc7-lisKXHB1j_nO2B9MZDrQxjjOtFhwADiLQ5YL1IokQn6G5WOtKxzLIgzOLcaqvridDROPOLMVLphiOfuP4cUf1rH3f1zq5AHte0D5Le2vmULf85n7c96bVp0_AqNQgOZG_9-sqktPMhuqigWqIF8ot6Qd2SkXQJdKsK1o1mpqtVMcWcb6ai4ylUEboeflV6yMQDLGYah5w"/>
+<button aria-label="Remove from wishlist" class="absolute top-1.5 right-1.5 w-7 h-7 rounded-full bg-surface/90 backdrop-blur-md flex items-center justify-center text-primary shadow-sm" onclick="event.preventDefault(); event.stopPropagation();">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<div class="absolute bottom-1 left-1 bg-surface-container-lowest/90 backdrop-blur-sm px-1.5 py-0.5 rounded text-on-surface font-caption-micro text-caption-micro flex items-center gap-0.5">
+<span>4.1</span>
+<span class="material-symbols-outlined text-[11px] text-amber-500 fill-icon">star</span>
+</div>
+</div>
+<div class="flex-1 min-w-0 flex flex-col justify-between h-full py-0.5">
+<div>
+<span class="font-caption-micro text-caption-micro text-secondary font-bold uppercase tracking-widest block">MANGO</span>
+<h2 class="font-title-sm text-title-sm text-on-surface font-semibold line-clamp-2 mt-0.5 group-hover:text-primary transition-colors">
+                Tailored Linen-Blend Blazer
+              </h2>
+<div class="mt-space-xs flex items-baseline gap-space-xs flex-wrap">
+<span class="font-price-prominent text-price-prominent text-on-surface font-extrabold">₹3,299</span>
+<span class="font-price-original text-price-original text-secondary line-through">₹4,999</span>
+<span class="font-label-pill text-label-pill text-tertiary font-bold">34% OFF</span>
+</div>
+</div>
+<!-- Deliberation Intelligence Chip -->
+<div class="mt-2.5 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-fixed/40 text-on-primary-fixed-variant self-start">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+<span class="font-caption-micro text-caption-micro font-bold">Decision Support Ready</span>
+</div>
+</div>
+</a>
+<!-- Deliberation Micro-Insights Snippet -->
+<div class="rounded-lg bg-surface-container-low p-space-sm flex flex-col gap-1.5">
+<div class="flex items-center justify-between text-on-surface">
+<span class="font-caption-micro text-caption-micro font-bold uppercase tracking-wider text-secondary">Concierge Summary</span>
+<span class="font-caption-micro text-caption-micro text-tertiary font-semibold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[12px]">check_circle</span> High Compatibility
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Matches 4 items in your wardrobe history. Fabric weight is ideal for upcoming seasonal weather in your city.
+          </p>
+</div>
+<!-- Primary Interactive Action Lockup -->
+<div class="flex items-center gap-space-xs">
+<a class="flex-1 h-11 bg-primary text-on-primary rounded-lg font-label-bold text-label-bold flex items-center justify-center gap-1.5 shadow-sm active:bg-primary-container transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+<span>Review &amp; Decide</span>
+</a>
+<button aria-label="Quick Move to Bag" class="h-11 px-4 bg-surface-container text-on-surface rounded-lg font-label-bold text-label-bold flex items-center justify-center gap-1 hover:bg-surface-container-high transition-colors active:scale-95" onclick="alert('Added MANGO Linen Blazer to Bag!')">
+<span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+<span>Move to Bag</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Remaining Wishlist Grid (2-Column Responsive Flow) -->
+<div class="px-screen-padding pb-space-2xl">
+<div class="flex items-center justify-between mb-space-sm">
+<h3 class="font-title-sm text-title-sm text-on-surface font-bold">Other Saved Pieces</h3>
+<span class="font-caption-micro text-caption-micro text-secondary font-medium">Auto-sorted by engagement</span>
+</div>
+<div class="grid grid-cols-2 gap-space-sm">
+<!-- Item Card 2: H&M Overshirt -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm flex flex-col justify-between">
+<div>
+<div class="relative w-full aspect-[3/4] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Modern studio photograph of H&amp;M relaxed fit structured cotton overshirt in earthy olive tone, crisp minimal editorial lighting on white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjYdrNVudWC40R4Lhg26_QsDoU3IrbAxnRsMFKYRL04UY1ooePlg5nabAolpCEW2QIonJzsmGZpb9vmZsx-FQ_zYVE-KE1Rx91p6WZEII78D-yKMuPkvCKoxCGZZmjsHRDlbkjwWoJG83JDy0rSWb1b34eUBXgzkj2M42uW77xzulalRzxuQU5BbzJrxXSGRLcjfomlv_F0B3Wkhmqiat3EM0XPgBjzhsXvg2CwjO9qI0RyYbRkNY7GA"/>
+<button aria-label="Wishlist heart" class="absolute top-2 right-2 w-7 h-7 rounded-full bg-surface/85 backdrop-blur-md flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 bg-surface-container-lowest/90 backdrop-blur-sm px-1.5 py-0.5 rounded text-on-surface font-caption-micro text-caption-micro flex items-center gap-0.5">
+<span>4.3</span>
+<span class="material-symbols-outlined text-[11px] text-amber-500 fill-icon">star</span>
+<span class="text-secondary opacity-80">(412)</span>
+</div>
+</div>
+<div class="p-2.5">
+<div class="flex items-center justify-between">
+<span class="font-caption-micro text-caption-micro text-secondary font-bold uppercase">H&amp;M</span>
+<span class="font-caption-micro text-caption-micro text-secondary">4d ago</span>
+</div>
+<h4 class="font-body-sm text-body-sm text-on-surface font-medium truncate mt-0.5">Relaxed Fit Structured Overshirt</h4>
+<div class="mt-1 flex items-baseline gap-1 flex-wrap">
+<span class="font-price-prominent text-title-sm text-on-surface font-extrabold">₹2,299</span>
+<span class="font-price-original text-caption-micro text-secondary line-through">₹2,999</span>
+<span class="font-caption-micro text-caption-micro text-tertiary font-bold">23% OFF</span>
+</div>
+<!-- AI Micro Signal -->
+<div class="mt-2 py-1 px-1.5 rounded bg-tertiary-fixed/30 text-on-tertiary-fixed-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-tertiary">check</span>
+<span class="font-caption-micro text-caption-micro font-medium truncate">True to Size (88%)</span>
+</div>
+</div>
+</div>
+<div class="px-2.5 pb-2.5 pt-1">
+<button class="w-full h-8 rounded-lg bg-surface-container text-on-surface font-label-pill text-label-pill font-bold flex items-center justify-center gap-1 active:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+<span>Evaluate</span>
+</button>
+</div>
+</div>
+<!-- Item Card 3: Zara Fluid Pleated Midi Dress -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm flex flex-col justify-between">
+<div>
+<div class="relative w-full aspect-[3/4] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Editorial lookbook shot of a woman modeling a fluid pleated midi dress in emerald jewel tone, dramatic motion folds, soft natural daylight on warm background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfDHMVSpNG40c8XCTnzaiqU_KnbQub2KSXHixUZcGhgIFnN-_r1AsMCVlBOfdszwEhDB9a9wXk_9_haknUvK23mxsA-7PnM7OfyCam5h_OjCYKGUFDuinYXvD05mAr6gWidaglfhuaPvTbW0CBkrvo6VuH7cjvEQgbnCEb5eFBzEeGB6_NrYUGpycjo9N3aD1rCjdXLMK5BtKuzN3eCPGUF6It_thqSPOH-oVqF9yW2oC0GdkMCgkmzA"/>
+<button aria-label="Wishlist heart" class="absolute top-2 right-2 w-7 h-7 rounded-full bg-surface/85 backdrop-blur-md flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 bg-surface-container-lowest/90 backdrop-blur-sm px-1.5 py-0.5 rounded text-on-surface font-caption-micro text-caption-micro flex items-center gap-0.5">
+<span>3.9</span>
+<span class="material-symbols-outlined text-[11px] text-amber-500 fill-icon">star</span>
+<span class="text-secondary opacity-80">(189)</span>
+</div>
+</div>
+<div class="p-2.5">
+<div class="flex items-center justify-between">
+<span class="font-caption-micro text-caption-micro text-secondary font-bold uppercase">ZARA</span>
+<span class="font-caption-micro text-caption-micro text-secondary">18d ago</span>
+</div>
+<h4 class="font-body-sm text-body-sm text-on-surface font-medium truncate mt-0.5">Fluid Pleated Midi Dress</h4>
+<div class="mt-1 flex items-baseline gap-1 flex-wrap">
+<span class="font-price-prominent text-title-sm text-on-surface font-extrabold">₹3,990</span>
+<span class="font-price-original text-caption-micro text-secondary line-through">₹5,590</span>
+<span class="font-caption-micro text-caption-micro text-tertiary font-bold">28% OFF</span>
+</div>
+<!-- Deliberation Caution Signal -->
+<div class="mt-2 py-1 px-1.5 rounded bg-secondary-container/50 text-on-secondary-fixed flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-primary">info</span>
+<span class="font-caption-micro text-caption-micro font-medium truncate">Runs Long for 5'4"</span>
+</div>
+</div>
+</div>
+<div class="px-2.5 pb-2.5 pt-1">
+<button class="w-full h-8 rounded-lg bg-surface-container text-on-surface font-label-pill text-label-pill font-bold flex items-center justify-center gap-1 active:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+<span>Evaluate</span>
+</button>
+</div>
+</div>
+<!-- Item Card 4: Massimo Dutti Knit Rib Polo -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm flex flex-col justify-between">
+<div>
+<div class="relative w-full aspect-[3/4] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Editorial luxury studio product photograph of a Massimo Dutti fine knit ribbed polo shirt in cream ecru color, styled neatly on a minimal hanger with soft side lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBH36SqfyS9nlwrHcG-M6Ddt3hIHb3A9NDHFW7c3yict7evGm_hSWFCBXZBoxEBlUiPuxdZB5jo4DOMpqf23Y-DOpPWRfP3BuIW-AqcsZ9iAj3Iphl_WaT6C8WDNa7dfQEK5Ze1QoI9f9WT74eV16H2rSNv1V7VbCtVVYicmOxUAdrZ4hCo25zJAmm8In-iGgZtCS3iK-es4ucqGBRgNe_9iFcCfPeb-bXaS74LyZP5WW-Mil3GW277JQ"/>
+<button aria-label="Wishlist heart" class="absolute top-2 right-2 w-7 h-7 rounded-full bg-surface/85 backdrop-blur-md flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 bg-surface-container-lowest/90 backdrop-blur-sm px-1.5 py-0.5 rounded text-on-surface font-caption-micro text-caption-micro flex items-center gap-0.5">
+<span>4.5</span>
+<span class="material-symbols-outlined text-[11px] text-amber-500 fill-icon">star</span>
+<span class="text-secondary opacity-80">(94)</span>
+</div>
+</div>
+<div class="p-2.5">
+<div class="flex items-center justify-between">
+<span class="font-caption-micro text-caption-micro text-secondary font-bold uppercase">MASSIMO DUTTI</span>
+<span class="font-caption-micro text-caption-micro text-secondary">2d ago</span>
+</div>
+<h4 class="font-body-sm text-body-sm text-on-surface font-medium truncate mt-0.5">Knit Rib Polo</h4>
+<div class="mt-1 flex items-baseline gap-1">
+<span class="font-price-prominent text-title-sm text-on-surface font-extrabold">₹4,490</span>
+</div>
+<!-- Signal -->
+<div class="mt-2 py-1 px-1.5 rounded bg-tertiary-fixed/30 text-on-tertiary-fixed-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-tertiary">star</span>
+<span class="font-caption-micro text-caption-micro font-medium truncate">Atelier Pick • High Fabric</span>
+</div>
+</div>
+</div>
+<div class="px-2.5 pb-2.5 pt-1">
+<button class="w-full h-8 rounded-lg bg-surface-container text-on-surface font-label-pill text-label-pill font-bold flex items-center justify-center gap-1 active:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+<span>Evaluate</span>
+</button>
+</div>
+</div>
+<!-- Item Card 5: Levi's 501 Selvedge -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm flex flex-col justify-between">
+<div>
+<div class="relative w-full aspect-[3/4] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Classic indigo blue denim Levis 501 straight fit jeans laid out cleanly with selvedge cuff rolled up, crisp editorial denim photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYwZDNAjYyEvNvgxSNwZfF1rbu1hCLRMoLfg4wsdQS8HKDQ6tV_boTj8nlTIDEHcKn3EGVLpwBloz-QgH_ErPketP0UdjWsMIVtXMvTgwhRPsCKay5fCE62VUqwsigMzPh9U26npdFgvFiwdGQc9UR5s2gpNrueq4_2THE6SmUD_Pc_PwJjNiJGt8zQgqU6vEWJ0iaptzpltYyBYv_Pg6BDV06VWS5tuMCGLHYZ4_DZ4h7tQ_oV5iNaw"/>
+<button aria-label="Wishlist heart" class="absolute top-2 right-2 w-7 h-7 rounded-full bg-surface/85 backdrop-blur-md flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<div class="absolute bottom-2 left-2 bg-surface-container-lowest/90 backdrop-blur-sm px-1.5 py-0.5 rounded text-on-surface font-caption-micro text-caption-micro flex items-center gap-0.5">
+<span>4.4</span>
+<span class="material-symbols-outlined text-[11px] text-amber-500 fill-icon">star</span>
+<span class="text-secondary opacity-80">(870)</span>
+</div>
+</div>
+<div class="p-2.5">
+<div class="flex items-center justify-between">
+<span class="font-caption-micro text-caption-micro text-secondary font-bold uppercase">LEVI'S</span>
+<span class="font-caption-micro text-caption-micro text-secondary">25d ago</span>
+</div>
+<h4 class="font-body-sm text-body-sm text-on-surface font-medium truncate mt-0.5">501 Straight Fit Selvedge Jeans</h4>
+<div class="mt-1 flex items-baseline gap-1 flex-wrap">
+<span class="font-price-prominent text-title-sm text-on-surface font-extrabold">₹3,799</span>
+<span class="font-price-original text-caption-micro text-secondary line-through">₹5,999</span>
+<span class="font-caption-micro text-caption-micro text-tertiary font-bold">36% OFF</span>
+</div>
+<!-- Signal -->
+<div class="mt-2 py-1 px-1.5 rounded bg-primary-fixed/40 text-on-primary-fixed-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-primary">trending_down</span>
+<span class="font-caption-micro text-caption-micro font-medium truncate">Lowest Price in 30 Days</span>
+</div>
+</div>
+</div>
+<div class="px-2.5 pb-2.5 pt-1">
+<button class="w-full h-8 rounded-lg bg-surface-container text-on-surface font-label-pill text-label-pill font-bold flex items-center justify-center gap-1 active:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[14px]">auto_awesome</span>
+<span>Evaluate</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Micro Interaction Script for Subtle Feedback -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterBtn = document.getElementById('toggle-filter-btn');
+      if (filterBtn) {
+        filterBtn.addEventListener('click', () => {
+          const featured = document.querySelector('[href="#"]');
+          if (featured) {
+            featured.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            featured.classList.add('ring-2', 'ring-primary', 'transition-all');
+            setTimeout(() => {
+              featured.classList.remove('ring-2', 'ring-primary');
+            }, 1200);
+          }
+        });
+      }
+    });
+  </script>
+</div></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-4px_20px_rgba(17,24,39,0.05)]" data-active-classes="text-primary font-semibold"><div class="flex justify-around items-center h-bottom-nav-height px-space-xs"><a class="flex flex-col items-center justify-center gap-0.5 w-16 h-12 text-secondary hover:text-on-surface transition-colors" data-path="home" href="#"><span class="material-symbols-outlined text-[22px]">home</span><span class="font-caption-micro text-caption-micro">Home</span></a><a class="flex flex-col items-center justify-center gap-0.5 w-16 h-12 text-secondary hover:text-on-surface transition-colors" data-path="categories" href="#"><span class="material-symbols-outlined text-[22px]">grid_view</span><span class="font-caption-micro text-caption-micro">Categories</span></a><a class="flex flex-col items-center justify-center gap-0.5 w-16 h-12 text-secondary hover:text-on-surface transition-colors" data-path="studio" href="#"><span class="material-symbols-outlined text-[22px]">auto_awesome</span><span class="font-caption-micro text-caption-micro">Studio</span></a><a aria-current="page" class="flex flex-col items-center justify-center gap-0.5 w-16 h-12 transition-colors relative text-primary font-semibold" data-path="wishlist-decision-assistant" href="#"><div class="relative flex items-center justify-center"><span class="material-symbols-outlined fill-icon text-[22px]">favorite</span><span class="absolute -top-1 -right-2.5 min-w-[15px] h-3.5 px-0.5 rounded-full bg-primary text-on-primary font-caption-micro text-[9px] leading-3.5 font-bold flex items-center justify-center shadow-sm">6</span></div><span class="font-caption-micro text-caption-micro">Wishlist</span></a><a class="flex flex-col items-center justify-center gap-0.5 w-16 h-12 text-secondary hover:text-on-surface transition-colors" data-path="profile" href="#"><span class="material-symbols-outlined text-[22px]">person_outline</span><span class="font-caption-micro text-caption-micro">Profile</span></a></div></nav>
+<script>
+(function(){
+  const routes = {
+    wishlist: "/",
+    product: "/product/",
+    assistant: "/assistant/",
+    compare: "/compare/",
+    result: "/result/"
+  };
+  function go(path){ window.location.href = path; }
+  function text(el){ return (el.innerText || el.textContent || "").replace(/\s+/g," ").trim().toLowerCase(); }
+  function wire(){
+    document.querySelectorAll("button,a").forEach(function(el){
+      if(el.dataset.navWired) return;
+      const t=text(el);
+      const aria=(el.getAttribute("aria-label")||"").toLowerCase();
+      const label=t+" "+aria;
+
+      if((label.includes("help me decide"))){
+        el.addEventListener("click",function(e){ e.preventDefault(); go(routes.assistant); });
+      } else if(label.includes("compare alternatives") || label.includes("compare value") || label.includes("explore more")){
+        el.addEventListener("click",function(e){ e.preventDefault(); go(routes.compare); });
+      } else if(label.includes("choose alternative")){
+        el.addEventListener("click",function(e){ e.preventDefault(); go(routes.result+"?choice=alternative"); });
+      } else if(label.includes("keep in wishlist") || label.includes("keep saved") || label.includes("decide later")){
+        el.addEventListener("click",function(e){
+          if(location.pathname.includes("/assistant")) {
+            e.preventDefault(); go(routes.result+"?choice=wishlist");
+          } else if(location.pathname.includes("/compare")) {
+            e.preventDefault(); go(routes.result+"?choice=wishlist");
+          }
+        });
+      } else if(label.includes("add to cart") || label.includes("proceed now")){
+        el.addEventListener("click",function(e){ e.preventDefault(); go(routes.result+"?choice=current"); });
+      } else if(label.includes("back to wishlist") || label.includes("bookmarks back")){
+        el.addEventListener("click",function(e){ e.preventDefault(); go(routes.wishlist); });
+      } else if(label.includes("back to alternatives")){
+        el.addEventListener("click",function(e){ e.preventDefault(); go(routes.compare); });
+      } else if(label.includes("view shopping bag")){
+        el.addEventListener("click",function(e){ e.preventDefault(); go(routes.wishlist); });
+      } else if(aria === "arrow_back" || label.trim()==="arrow_back"){
+        el.addEventListener("click",function(e){
+          e.preventDefault();
+          if(location.pathname.includes("/product")) go(routes.wishlist);
+          else if(location.pathname.includes("/assistant")) go(routes.product);
+          else if(location.pathname.includes("/compare")) go(routes.assistant);
+          else if(location.pathname.includes("/result")) go(routes.compare);
+          else go(routes.wishlist);
+        });
+      }
+      el.dataset.navWired="1";
+    });
+
+    // Make obvious wishlist product cards clickable to the product screen.
+    if(location.pathname === "/" || location.pathname === ""){
+      document.querySelectorAll("div.cursor-pointer, article").forEach(function(card){
+        if(card.dataset.cardWired) return;
+        const t=text(card);
+        if(t.includes("mango") || t.includes("blazer") || t.includes("dress") || t.includes("kurta") || t.includes("sneaker") || t.includes("shirt")){
+          card.addEventListener("click",function(e){
+            if(e.target.closest("button,a")) return;
+            go(routes.product);
+          });
+          card.dataset.cardWired="1";
+        }
+      });
+    }
+  }
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",wire);
+  else wire();
+  setTimeout(wire,600);
+})();
+</script>
+
+
+<script>
+(function(){
+  function go(path){ window.location.href = path; }
+  function text(el){ return (el.innerText || el.textContent || "").replace(/\s+/g," ").trim().toLowerCase(); }
+  function wireReview(){
+    document.querySelectorAll('a,button').forEach(function(el){
+      if(el.dataset.reviewWired) return;
+      const label = text(el) + " " + (el.getAttribute('aria-label')||'').toLowerCase();
+      if(label.includes('review & decide') || label.includes('review and decide') ||
+         label.includes('see recommended action')){
+        el.addEventListener('click', function(e){
+          e.preventDefault();
+          go('/assistant/');
+        });
+        el.dataset.reviewWired='1';
+      }
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', wireReview);
+  else wireReview();
+  setTimeout(wireReview, 300);
+})();
+</script>
+
+<script>
+(function(){
+  function go(path){ window.location.href = path; }
+  function txt(el){ return (el.innerText||el.textContent||"").replace(/\s+/g," ").trim().toLowerCase(); }
+  function wireHero(){
+    document.querySelectorAll('a').forEach(function(a){
+      if(a.dataset.heroWired) return;
+      const t=txt(a);
+      if(t.includes('tailored linen-blend blazer') || t.includes('decision support ready')){
+        a.addEventListener('click',function(e){ e.preventDefault(); go('/product/'); });
+        a.dataset.heroWired='1';
+      }
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', wireHero);
+  else wireHero();
+  setTimeout(wireHero,300);
+})();
+</script>
+</body></html>
